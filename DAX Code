@@ -1,0 +1,18 @@
+Final Measure for Revenue = 
+IF(MAX(FilterRevenue[FilterbyRevenue])="Gross",
+    CALCULATE([Total Revenue],
+    DATESBETWEEN(DateTable[Date],
+    MAX(DateTable[Date])-MAX(TimeFilterTable[TimeValue]),
+    MAX(DateTable[Date])))
+,
+    IF(MAX(FilterRevenue[FilterbyRevenue])="Net",
+    CALCULATE([Net Revenue],
+    DATESBETWEEN(DateTable[Date],
+    MAX(DateTable[Date])-MAX(TimeFilterTable[TimeValue]),
+    MAX(DateTable[Date])))
+    ,
+    CALCULATE([Profit Measure],
+    DATESBETWEEN(DateTable[Date],
+    MAX(DateTable[Date])-MAX(TimeFilterTable[TimeValue]),
+    MAX(DateTable[Date]))))
+)
